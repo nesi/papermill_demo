@@ -7,6 +7,8 @@ The goal is to demonstrate how to use it to run non-interactively a series of no
 
 ## Installation
 
+TODO clone the repo
+
 Create a Conda environment:
 ```
 module purge && module load Miniconda3/4.10.3
@@ -26,7 +28,9 @@ nesi-add-kernel -p ./venv papermill_demo
 ```
 
 
-## Getting Started
+## Demo
+
+TODO 2 notebooks available
 
 Activate the virtual environment:
 ```
@@ -35,8 +39,34 @@ source $(conda info --base)/etc/profile.d/conda.sh
 conda activate ./venv
 ```
 
-TODO command line
+TODO
+```
+mkdir results
+```
 
-TODO slurm
+TODO
+```
+papermill -k papermill_demo -p result_file results/dataset.npz \
+    notebooks/preprocessing.ipynb results/preprocessing.ipynb
+```
+
+TODO
+```
+papermill -k papermill_demo \
+    -p input_file results/dataset.npz \
+    -f config/short_run.yaml \
+    notebooks/model_fitting.ipynb \
+    results/model_fitting_short.ipynb
+```
+
+TODO
+```
+sbatch slurm/fit_long_run.sl
+```
+
+TODO
+```
+squeue -u "$USER"
+```
 
 TODO snakemake
