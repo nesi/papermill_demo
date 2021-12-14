@@ -1,0 +1,18 @@
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - pip
+  - pip:
+    - numpy
+    - scipy
+    - matplotlib
+    - scikit-learn
+    - papermill
+    - snakemake
+    - black
+    - flake8
+    - nbqa
+variables:
+  PYTHONNOUSERSITE: '1'
