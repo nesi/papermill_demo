@@ -1,0 +1,3 @@
+jobs: 10
+cluster: "sbatch -t {resources.time_min} --mem={resources.mem_mb} -c {threads} -o 'logs/%j-{rule}.out' -e logs/%j-{rule}.out --job-name papermill_demo"
+default-resources: [cpus=2, mem_mb=2000, time_min=5]
