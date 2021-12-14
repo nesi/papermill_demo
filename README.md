@@ -7,7 +7,10 @@ The goal is to demonstrate how to use it to run non-interactively a series of no
 
 ## Installation
 
-TODO clone the repo
+From a terminal running on NeSI, clone this repository:
+```
+https://github.com/nesi/papermill_demo
+```
 
 Create a Conda environment:
 ```
@@ -30,7 +33,12 @@ nesi-add-kernel -p ./venv papermill_demo
 
 ## Demo
 
-TODO 2 notebooks available
+This repository contains 2 notebooks:
+
+- [preprocessing.ipynb](notebooks/preprocessing.ipynb) downloads the MNIST dataset and split it in train/test sets,
+- [model_fitting](notebooks/model_fitting.ipynb) fits a simple MLP model on the prepared MNIST dataset.
+
+The following example will illustrate how to run these 2 notebooks non-interactively and with different parameters.
 
 Activate the virtual environment:
 ```
@@ -38,19 +46,21 @@ module purge && module load Miniconda3/4.10.3
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate ./venv
 ```
-
-TODO
+and create a folder for the results:
 ```
 mkdir results
 ```
 
-TODO
+First, let's run the preprocessing notebook, saving the dataset in the `results` folder:
 ```
 papermill -k papermill_demo -p result_file results/dataset.npz \
     notebooks/preprocessing.ipynb results/preprocessing.ipynb
 ```
+The `-p result_file results/dataset.npz` option injects this parameter in the notebook.
 
-TODO
+Note that the `-k papermill_demo` option sets the jupyter kernel to run the notebook.
+
+Next, we can run the model fitting model with a set of parameters injected from a [file](config/short_run.yaml), using the `-f` option:
 ```
 papermill -k papermill_demo \
     -p input_file results/dataset.npz \
@@ -59,17 +69,16 @@ papermill -k papermill_demo \
     results/model_fitting_short.ipynb
 ```
 
-TODO
+To run it on a larger node, we can use a [slurm script](slurm/fit_long_run.sl) to request the relevant resources:
 ```
 sbatch slurm/fit_long_run.sl
 ```
-
-TODO
+and check if the job is running using `squeue`:
 ```
 squeue -u "$USER"
 ```
 
-TODO snakemake
+Finally, let's combine it with [Snakemake](https://snakemake.readthedocs.io) to get a [workflow](Snakefile) using Slurm jobs and running multiple configurations:
 ```
 snakemake --profile slurm
 ```
