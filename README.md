@@ -70,3 +70,6 @@ squeue -u "$USER"
 ```
 
 TODO snakemake
+```
+snakemake --profile slurm
+```
