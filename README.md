@@ -9,25 +9,25 @@ The goal is to demonstrate how to use it to run non-interactively a series of no
 
 From a terminal running on NeSI, clone this repository:
 ```
-https://github.com/nesi/papermill_demo
+git clone https://github.com/nesi/papermill_demo
 ```
 
 Create a Conda environment:
 ```
 module purge && module load Miniconda3/4.10.3
-conda env create -p venv -f environment.yml
+conda env create -p venv -f environment.lock.yml
 ```
-
-For reproducibility, save the version of installed packages in `environment.lock.txt`:
-```
-conda env export -p venv --no-builds | sed "/^name/d; /^prefix/d" > environment.lock.yml
-```
-Note this file can be used to create the environment instead of `environment.yml`.
 
 Install a jupyter kernel for the notebooks:
 ```
 module purge && module load JupyterLab
 nesi-add-kernel -p ./venv papermill_demo
+```
+
+*Note: The `environment.lock.yml` file contains the version of all installed packages for reproducibility.
+It has been generated from a conda environment created using the `environment.yml` file and exported it as follows:*
+```
+conda env export -p venv --no-builds | sed "/^name/d; /^prefix/d" > environment.lock.yml
 ```
 
 
