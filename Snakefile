@@ -16,7 +16,7 @@ rule preprocessing:
     shell:
         "papermill -k {kernel} -p result_file {output.dataset} "
         "{input.notebook} {output.notebook} "
-        
+
 
 rule model_fitting:
     input:
