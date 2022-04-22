@@ -46,10 +46,6 @@ module purge && module load Miniconda3/4.10.3
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate ./venv
 ```
-and create a folder for the results:
-```
-mkdir results
-```
 
 First, let's run the preprocessing notebook, saving the dataset in the `results` folder:
 ```

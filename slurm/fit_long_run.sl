@@ -2,26 +2,14 @@
 #SBATCH --time=00-00:10:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=20
-#SBATCH --mem=2GB
+#SBATCH --mem=4GB
 #SBATCH --output logs/%j-%x.out
 #SBATCH --error logs/%j-%x.out
-#SBATCH --export=NONE
-
-export SLURM_EXPORT_ENV=ALL
-
-# exit on errors, undefined variables and errors in pipes
-set -euo pipefail
-
-# load the environment modules
-module purge
-module load Miniconda3/4.10.3
 
 # activate the conda environment
-set +u
+module purge && module load Miniconda3/4.10.3
 source $(conda info --base)/etc/profile.d/conda.sh
-conda deactivate  # enforce base environment to be unloaded
 conda activate ./venv
-set -u
 
 # run the model fitting notebook
 papermill -k papermill_demo \
