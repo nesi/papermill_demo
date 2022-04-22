@@ -8,7 +8,7 @@
 #SBATCH --error logs/%j-%x.out
 
 # activate the conda environment
-module purge && module load Miniconda3/4.10.3 cuDNN/8.1.1.33-CUDA-11.2.0
+module purge && module load Miniconda3/4.10.3
 source $(conda info --base)/etc/profile.d/conda.sh
 conda activate ./venv
 

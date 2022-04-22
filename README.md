@@ -21,7 +21,7 @@ conda env create -p venv -f environment.lock.yml
 Install a jupyter kernel for the notebooks:
 ```
 module purge && module load JupyterLab
-nesi-add-kernel -p ./venv papermill_demo
+nesi-add-kernel -p ./venv papermill_demo cuDNN/8.1.1.33-CUDA-11.2.0
 ```
 
 *Note: The `environment.lock.yml` file contains the version of all installed packages for reproducibility.
