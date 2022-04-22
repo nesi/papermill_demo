@@ -33,12 +33,13 @@ conda env export -p venv --no-builds | sed "/^name/d; /^prefix/d" > environment.
 
 ## Demo
 
-This repository contains 2 notebooks:
+This repository contains 3 notebooks:
 
 - [preprocessing.ipynb](notebooks/preprocessing.ipynb) downloads the MNIST dataset and split it in train/test sets,
-- [model_fitting](notebooks/model_fitting.ipynb) fits a simple MLP model on the prepared MNIST dataset.
+- [model_fitting.ipynb](notebooks/model_fitting.ipynb) fits a simple MLP model on the prepared MNIST dataset.
+- [keras_model.ipynb](notebooks/keras_model.ipynb) fits a MLP model on the MNIST dataset using Keras and Keras Tuner.
 
-The following example will illustrate how to run these 2 notebooks non-interactively and with different parameters.
+The following example will illustrate how to run the first 2 notebooks non-interactively and with different parameters.
 
 Activate the virtual environment:
 ```
