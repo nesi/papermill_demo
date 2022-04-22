@@ -9,6 +9,8 @@ dependencies:
     - scipy
     - matplotlib
     - scikit-learn
+    - tensorflow
+    - keras-tuner
     - papermill
     - snakemake
     - black
