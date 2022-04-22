@@ -1,0 +1,16 @@
+jobs: 10
+cluster:
+    sbatch
+        --parsable
+        --time {resources.time_min}
+        --mem {resources.mem_mb}
+        --cpus-per-task {threads}
+        --output logs/%j-{rule}.out
+        --error logs/%j-{rule}.out
+        --job-name papermill_demo
+cluster-status: nesi/status.py
+cluster-cancel: scancel
+default-resources:
+    - mem_mb=4000
+    - time_min=10
+printshellcmds: True

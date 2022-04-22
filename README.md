@@ -76,5 +76,5 @@ squeue -u "$USER"
 
 Finally, let's combine it with [Snakemake](https://snakemake.readthedocs.io) to get a [workflow](Snakefile) using Slurm jobs and running multiple configurations:
 ```
-snakemake --profile slurm
+snakemake --profile nesi
 ```
