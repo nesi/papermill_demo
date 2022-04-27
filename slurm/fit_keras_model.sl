@@ -19,4 +19,4 @@ papermill -k papermill_demo \
     -p max_units 256 \
     --cwd results \
     notebooks/keras_model.ipynb \
-    results/keras_model.ipynb
+    "results/keras_model_${SLURM_JOB_ID}.ipynb"
